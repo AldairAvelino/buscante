@@ -27,6 +27,6 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    component: ListaLivrosComponent
+    redirectTo: 'lista-livros'
   }
 ];
