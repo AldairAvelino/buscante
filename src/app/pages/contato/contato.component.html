@@ -14,6 +14,7 @@
       <div class="campo-form">
         <label for="nome">Nome</label>
         <input
+          [attr.aria-invalid]="contatoForm.get('nome')?.invalid"
           type="text"
           id="nome"
           placeholder="Digite seu nome completo"
@@ -30,6 +31,7 @@
       <div class="campo-form">
         <label for="email">E-mail</label>
         <input
+          [attr.aria-invalid]="contatoForm.get('email')?.invalid"
           type="email"
           id="email"
           placeholder="Digite seu email"
@@ -113,6 +115,7 @@
       <div class="campo-form">
         <label for="mensagem">Mensagem</label>
         <textarea
+          [attr.aria-invalid]="contatoForm.get('mensagem')?.invalid"
           id="mensagem"
           placeholder="Digite sua mensagem"
           formControlName="mensagem"
