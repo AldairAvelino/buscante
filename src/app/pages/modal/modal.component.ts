@@ -1,10 +1,12 @@
 import { A11yModule } from '@angular/cdk/a11y';
 import {
   Component,
+  ElementRef,
   EventEmitter,
   HostListener,
   Input,
   Output,
+  Renderer2,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -22,7 +24,10 @@ export class ModalComponent {
   statusModal: boolean = true;
   @Output() mudouModal = new EventEmitter<boolean>()
 
-  constructor() {}
+  constructor(
+    private renderer: Renderer2,
+    private element: ElementRef
+  ) {}
 
   @HostListener('document:keydown.escape') fecharModalLivro() {
     if(this.statusModal){
@@ -33,6 +38,7 @@ export class ModalComponent {
   fecharModal() {
     this.statusModal = false
     this.mudouModal.emit(this.statusModal)
+    this.renderer.setStyle(this.element.nativeElement.ownerDocument.body, 'overflow', 'scroll')
   }
 
   lerPrevia() {
