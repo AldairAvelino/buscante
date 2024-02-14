@@ -2,6 +2,7 @@ import { A11yModule } from '@angular/cdk/a11y';
 import {
   Component,
   EventEmitter,
+  HostListener,
   Input,
   Output,
 } from '@angular/core';
@@ -22,6 +23,12 @@ export class ModalComponent {
   @Output() mudouModal = new EventEmitter<boolean>()
 
   constructor() {}
+
+  @HostListener('document:keydown.escape') fecharModalLivro() {
+    if(this.statusModal){
+      this.fecharModal()
+    }
+  }
 
   fecharModal() {
     this.statusModal = false
